@@ -8,6 +8,7 @@
 
 int main(void){
 	int socket_serveur = creer_serveur(8080);
+	initialiser_signaux();
 while(1){
 	int socket_client ;
 socket_client = accept ( socket_serveur , NULL , NULL );

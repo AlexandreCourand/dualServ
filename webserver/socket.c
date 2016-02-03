@@ -5,6 +5,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <string.h>
+#include <signal.h>
 
 int creer_serveur(int port){
 	int socket_serveur ;
@@ -36,3 +37,12 @@ int creer_serveur(int port){
 	}
 	return socket_serveur;
 }
+
+void initialiser_signaux(void){
+	if (signal(SIGPIPE ,SIG_IGN)==SIG_ERR){
+		perror ("signal");
+	}
+
+}
+
+
