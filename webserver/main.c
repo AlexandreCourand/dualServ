@@ -20,12 +20,23 @@ while(1){
 		}
 		/* On peut maintenant dialoguer avec le client */
 
-		const char * message_bienvenue = " Bonjour , bienvenue sur mon serveur \n " ;
-		int i = 0;
-		for(i = 0;i<10;i++){
-			sleep(1);
+		const char * message_bienvenue = " Bonjour , bienvenue sur mon serveur \n\n\n\n\n\n\n\n\n\n !" ; // les 10 lignes du serveur 
+		//différent que d'envoyer  10 fois le même message
+		//int i = 0;
+		//for(i = 0;i<10;i++){
+			//sleep(1);
+			char buf[1024];
+			int j=read(socket_client,buf,1024);
+
+			if ( j == -1){
+				perror ("read");
+			/* traitement d ’ erreur */
+			}
+			buf[j]='\0';
+			printf(buf);
 			write ( socket_client , message_bienvenue , strlen ( message_bienvenue ));
-		}
+		//}
+			
 		
 		
 	//}
